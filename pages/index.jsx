@@ -1,7 +1,10 @@
 import Head from 'next/head'
+import {useState} from 'react'
 
 
 export default function Home() {
+
+  const [count, setCounter] =useState(0);
   return (
     <>
         <div>
@@ -17,6 +20,7 @@ export default function Home() {
             <h1>This is our AI app</h1>
             <img src='/favicon.ico'/>
             <h3>Name of my Pet</h3>
+            <p>You've used this app {count} times</p>
             <form>
               <input
               type='text'
@@ -24,7 +28,15 @@ export default function Home() {
               placeholder='Enter an animal'
              />
               <input
-              type='submit' />
+              type='submit' onClick={(e)=> {
+                e.preventDefault()
+                if(count == 10) {
+                  return console.log("You've reached your limit");
+                }
+
+
+                setCounter(count + 1)}}
+              />
             </form>
           </main>
         </div>
