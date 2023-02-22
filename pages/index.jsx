@@ -9,6 +9,10 @@ export default function Home() {
 
   async function onSubmit (e) {
       e.preventDefault()
+      try {
+          if (count == 10) {
+              return console.log("You've reached your limit");
+          }
       const response = await fetch("api/generate", {
           method: "POST",
           headers: {
@@ -16,12 +20,19 @@ export default function Home() {
           },
           body: JSON.stringify({animal:animalInput})
       });
-
-      if (count == 10) {
-        return console.log("You've reached your limit");
+      
+      const data = await response.json();
+      if (response.status !== 200) {
+          throw data.error || new Error(`Request failed with  ${response.status}`);
       }
+
+
       setCounter(count + 1)
       setAnimalInput('');
+      } catch(error){
+          console.error(error);
+          alert(error.message);
+      }
     }
 
   return (
