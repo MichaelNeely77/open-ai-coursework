@@ -7,8 +7,16 @@ export default function Home() {
   const [count, setCounter] =useState(0);
   const [animalInput, setAnimalInput] = useState('');
 
-  function onSubmit (e) {
+  async function onSubmit (e) {
       e.preventDefault()
+      const response = await fetch("api/generate", {
+          method: "POST",
+          headers: {
+              "Content_Type": "application/json"
+          },
+          body: JSON.stringify({animal:animalInput})
+      });
+
       if (count == 10) {
         return console.log("You've reached your limit");
       }
