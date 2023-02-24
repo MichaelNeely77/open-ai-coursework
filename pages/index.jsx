@@ -37,8 +37,8 @@ export default function Home() {
     }
 
   return (
-    <>
-        <div>
+
+        <div className={styles.body}>
           <Head>
 
             <title>Create Next App</title>
@@ -51,7 +51,6 @@ export default function Home() {
             <h1>This is our AI app</h1>
             <img src='/favicon.ico' className={styles.icon}/>
             <h3>Name of my Pet</h3>
-            <p>You've used this app {count} times</p>
             <form onSubmit={onSubmit}>
               <input
               type='text'
@@ -73,6 +72,6 @@ export default function Home() {
               <div className={styles.result}>{result}</div>
           </main>
         </div>
-    </>
+
   )
 }
