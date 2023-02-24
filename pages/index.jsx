@@ -27,7 +27,7 @@ export default function Home() {
           throw data.error || new Error(`Request failed with  ${response.status}`);
       }
 
-
+    setResult(data.result);
       setCounter(count + 1)
       setAnimalInput('');
       } catch(error){
