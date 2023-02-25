@@ -17,7 +17,7 @@ export default function Home() {
       const response = await fetch("api/generate", {
           method: "POST",
           headers: {
-              "Content_Type": "application/json"
+              "Content_Type": "application/json",
           },
           body: JSON.stringify({animal:animalInput})
       });
@@ -58,7 +58,7 @@ export default function Home() {
               value={animalInput}
               onChange={(e)=>{
                 setAnimalInput(e.target.value)
-                console.log(animalInput)
+                // console.log(animalInput)
               }
               }
               placeholder='Enter an animal'
